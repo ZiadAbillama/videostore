@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Video</title>
+</head>
+<body>
+    <h1>Add a New Video</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+    <p><a href="{% url 'video_list' %}">⬅️ Back to List</a></p>
+</body>
+</html>

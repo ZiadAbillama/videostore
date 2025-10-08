@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video List</title>
+</head>
+<body>
+    <h1>All Videos</h1>
+    <a href="{% url 'add_video' %}">➕ Add New Video</a>
+    <hr>
+
+    {% if videos %}
+        <ul>
+        {% for video in videos %}
+            <li>
+                <strong>{{ video.MovieTitle }}</strong> ({{ video.ReleaseYear }}) <br>
+                🎬 Director: {{ video.DirectorName }} <br>
+                ⭐ Cast: {{ video.Actor1Name }}{% if video.Actor2Name %}, {{ video.Actor2Name }}{% endif %} <br>
+                🎭 Genre: {{ video.MovieGenre }}
+                <br>
+                <a href="{% url 'edit_video' video.pk %}">✏️ Edit</a> |
+                <a href="{% url 'delete_video' video.pk %}">🗑️ Delete</a>
+            </li>
+            <hr>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No videos found.</p>
+    {% endif %}
+</body>
+</html>

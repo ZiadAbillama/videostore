@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Video Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>body{font-family:system-ui;margin:2rem} a{margin-right:0.5rem}</style>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'movies:list' %}">All Movies</a>
+    <a href="{% url 'movies:create' %}">Add Movie</a>
+  </nav>
+  <hr>
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% block content %}{% endblock %}
+</body>
+</html>

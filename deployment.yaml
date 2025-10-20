@@ -13,8 +13,8 @@ spec:
         app: django-app
     spec:
       containers:
-      - name: django-container
-        image: mydjangoapp:latest
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 8000
+        - name: django-container
+          image: videostore-app:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000

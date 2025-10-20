@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ movie.MovieTitle }} ({{ movie.ReleaseYear }})</h1>
+<ul>
+  <li><b>MovieID:</b> {{ movie.MovieID }}</li>
+  <li><b>Director:</b> {{ movie.DirectorName }}</li>
+  <li><b>Actors:</b> {{ movie.Actor1Name }}{% if movie.Actor2Name %}, {{ movie.Actor2Name }}{% endif %}</li>
+  <li><b>Genre:</b> {{ movie.MovieGenre }}</li>
+</ul>
+<p>
+  <a href="{% url 'movies:update' movie.pk %}">Edit</a>
+  <a href="{% url 'movies:delete' movie.pk %}">Delete</a>
+</p>
+{% endblock %}
+
+templates/movies/movie_form.html
+
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ mode }} Movie</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">{{ mode }}</button>
+  <a href="{% url 'movies:list' %}">Cancel</a>
+</form>
+{% endblock %}
